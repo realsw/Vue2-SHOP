@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>这是APP组件</div>
+     <Topbar/>
+     <Header/>
+     <Footer/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import Topbar from '@/components/Topbar'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
+import {jinpinApi} from '@/request/api.js'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    Topbar,Header,Footer,
+  },
+  created(){
+    jinpinApi().then(res=>{
+      console.log(res.data);
+    })
   }
 }
 </script>
@@ -24,5 +35,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.topbar {
+  height: 50px;
+  background-color: #888;
 }
 </style>
